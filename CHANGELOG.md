@@ -1,6 +1,10 @@
 # 📜 Changelog
 
 
+## [1.1.1] - 2025-02-24
+### Adicionado
+- 🚀 Novas funções e validações
+
 ## [0.1.1] - 2025-02-24
 ### Adicionado
 - 🚀 Ajuste na rota do repositório.

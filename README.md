@@ -1,6 +1,6 @@
 # 📚 **smart_time_py** - Conversão Inteligente de Datas e Horas em Python
 
-🔗 **smart_time_py** é um pacote Python que oferece **funções práticas e flexíveis** para conversão entre `datetime` e `string`, com suporte a formatos personalizados.
+🔗 **smart_time_py** é um pacote Python que oferece **funções práticas e flexíveis** para conversão entre `datetime` e `string`, manipulações de tempo, validações aprimoradas e suporte a fuso horário.
 
 ---
 
@@ -8,6 +8,9 @@
 - 🕒 **Conversão de `string` para `datetime`** com formatação customizada.
 - 📝 **Conversão de `datetime` para `string`** em qualquer formato especificado.
 - ✅ **Validação de strings de data/hora**.
+- 🌐 **Conversão de datas com suporte a fuso horário**.
+- 🔄 **Transformações entre formatos de data**.
+- ⏳ **Manipulações de tempo**: adição, subtração e cálculo de diferença entre datas.
 - 🚀 **Funções leves e otimizadas para aplicações diversas.**
 
 ---
@@ -31,7 +34,6 @@ pip install smart_time_py
 ```python
 from smart_time_py.converter import string_to_datetime
 
-# Exemplo de uso
 date_str = "2025-02-24 14:30:00"
 date_format = "%Y-%m-%d %H:%M:%S"
 dt = string_to_datetime(date_str, date_format)
@@ -44,7 +46,6 @@ print("🕒 String para datetime:", dt)
 from smart_time_py.converter import datetime_to_string
 from datetime import datetime
 
-# Exemplo de uso
 dt_obj = datetime(2025, 2, 24, 14, 30)
 date_format = "%d/%m/%Y %H:%M"
 dt_str = datetime_to_string(dt_obj, date_format)
@@ -56,16 +57,45 @@ print("📝 Datetime para string:", dt_str)
 ```python
 from smart_time_py.converter import validate_date_string
 
-# Exemplo de uso
 is_valid = validate_date_string("24/02/2025", "%d/%m/%Y")
 print("✅ String de data válida:", is_valid)
+```
+
+### 🌐 **Conversão com Fuso Horário**
+
+```python
+from smart_time_py.converter import convert_with_timezone
+
+resultado = convert_with_timezone("2025-02-25 15:00:00", "America/Sao_Paulo")
+print("🌐 Data com fuso horário:", resultado)
+```
+
+### ⏳ **Manipulação de Tempo**
+
+```python
+from smart_time_py.converter import add_time, subtract_time
+from datetime import datetime
+
+base_date = datetime(2025, 1, 1)
+print("➕ Data após manipulação:", add_time(base_date, days=10, months=1))
+print("➖ Data após subtração:", subtract_time(base_date, years=1))
+```
+
+### 📏 **Diferença entre Datas**
+
+```python
+from smart_time_py.converter import calculate_difference
+
+date1 = datetime(2025, 1, 1)
+date2 = datetime(2025, 2, 1)
+print("📏 Diferença em dias:", calculate_difference(date1, date2, "days"))
 ```
 
 ---
 
 ## 🧪 **Testes**
 
-Os testes unitários foram desenvolvidos com `pytest`. Para executá-los:
+Execute os testes com `pytest`:
 
 ```bash
 pytest tests/
@@ -86,7 +116,7 @@ smart_time_py/
 │
 ├── smart_time_py/              # 📦 Código do pacote
 │   ├── __init__.py
-│   └── converter.py            # 🔄 Funções principais de conversão
+│   └── converter.py            # 🔄 Funções principais de conversão e manipulação
 │
 ├── tests/                      # 🧪 Testes unitários
 │   └── test_converter.py
@@ -114,14 +144,13 @@ Desenvolvido por **[Roberto Lima](https://robertolima-developer.vercel.app/)** �
 ## 💬 **Contato**
 
 - 📧 **Email**: robertolima.izphera@gmail.com
-- 💼 **LinkedIn**: [Roberto Lima](https://www.linkedin.com/in/roberto-lima-01/)  
+- 💼 **LinkedIn**: [Roberto Lima](https://www.linkedin.com/in/roberto-lima-01/)
 
 ---
 
 ## ⭐ **Gostou do projeto?**
 
-Deixe uma ⭐ no repositório e compartilhe com a comunidade! 🚀✨  
-```
+Deixe uma ⭐ no repositório e compartilhe com a comunidade! 🚀✨
 
 ---
 
