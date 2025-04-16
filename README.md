@@ -1,17 +1,20 @@
 # 📚 **smart_time_py** - Conversão Inteligente de Datas e Horas em Python
 
-🔗 **smart_time_py** é um pacote Python que oferece **funções práticas e flexíveis** para conversão entre `datetime` e `string`, manipulações de tempo, validações aprimoradas e suporte a fuso horário.
+🔗 **smart_time_py** é um pacote Python que oferece **funções práticas e flexíveis** para conversão entre `datetime` e `string`, manipulações de tempo, validações aprimoradas, suporte a fuso horário, gerenciamento de feriados e muito mais.
 
 ---
 
 ## ✨ **Funcionalidades Principais**
-- 🕒 **Conversão de `string` para `datetime`** com formatação customizada.
-- 📝 **Conversão de `datetime` para `string`** em qualquer formato especificado.
-- ✅ **Validação de strings de data/hora**.
-- 🌐 **Conversão de datas com suporte a fuso horário**.
-- 🔄 **Transformações entre formatos de data**.
-- ⏳ **Manipulações de tempo**: adição, subtração e cálculo de diferença entre datas.
-- 🚀 **Funções leves e otimizadas para aplicações diversas.**
+- 🕒 **Conversão de `string` para `datetime`** com formatação customizada
+- 📝 **Conversão de `datetime` para `string`** em qualquer formato especificado
+- ✅ **Validação de strings de data/hora** com suporte a múltiplos formatos
+- 🌐 **Conversão de datas com suporte a fuso horário** e DST
+- 🔄 **Transformações entre formatos de data** com detecção automática
+- ⏳ **Manipulações de tempo**: adição, subtração e cálculo de diferença entre datas
+- 📅 **Gerenciamento de feriados** com suporte a feriados nacionais e personalizados
+- 📊 **Períodos e intervalos de tempo** com operações avançadas
+- 📈 **Formatação inteligente** de datas e horas
+- 🚀 **Funções leves e otimizadas** para aplicações diversas
 
 ---
 
@@ -23,7 +26,7 @@ Instale o pacote via **PyPI**:
 pip install smart_time_py
 ```
 
-> Certifique-se de ter o Python 3.6+ instalado.
+> Certifique-se de ter o Python 3.8+ instalado.
 
 ---
 
@@ -91,6 +94,117 @@ date2 = datetime(2025, 2, 1)
 print("📏 Diferença em dias:", calculate_difference(date1, date2, "days"))
 ```
 
+### 📅 **Gerenciamento de Feriados**
+
+```python
+from smart_time_py.holidays import (
+    is_holiday,
+    add_holiday,
+    remove_holiday,
+    get_holidays,
+    is_working_day
+)
+from datetime import date
+
+# Verificar se uma data é feriado
+data = date(2025, 1, 1)
+print("🎉 É feriado?", is_holiday(data))
+
+# Adicionar um feriado personalizado
+add_holiday(date(2025, 4, 1), "Dia da Mentira")
+
+# Verificar se é dia útil
+print("💼 É dia útil?", is_working_day(data))
+
+# Listar todos os feriados
+print("📅 Feriados:", get_holidays(2025))
+```
+
+### 📊 **Períodos e Intervalos de Tempo**
+
+```python
+from smart_time_py.periods import (
+    TimePeriod,
+    DateRange,
+    create_period,
+    create_date_range
+)
+from datetime import datetime, timedelta
+
+# Criar um período de tempo
+periodo = TimePeriod(
+    start=datetime(2025, 1, 1),
+    end=datetime(2025, 12, 31),
+    name="Ano 2025"
+)
+
+# Verificar sobreposição de períodos
+outro_periodo = TimePeriod(
+    start=datetime(2025, 6, 1),
+    end=datetime(2025, 6, 30),
+    name="Junho 2025"
+)
+print("📊 Períodos se sobrepõem?", periodo.overlaps(outro_periodo))
+
+# Criar um intervalo de datas
+intervalo = DateRange(
+    start=date(2025, 1, 1),
+    end=date(2025, 1, 31),
+    step=timedelta(days=1)
+)
+print("📈 Datas no intervalo:", list(intervalo))
+```
+
+### 📈 **Formatação Inteligente**
+
+```python
+from smart_time_py.formatters import (
+    format_relative,
+    format_natural,
+    format_iso
+)
+from datetime import datetime, timedelta
+
+agora = datetime.now()
+ontem = agora - timedelta(days=1)
+
+# Formatação relativa
+print("⏰ Formatação relativa:", format_relative(ontem))
+
+# Formatação natural
+print("📅 Formatação natural:", format_natural(agora))
+
+# Formatação ISO
+print("🌐 Formatação ISO:", format_iso(agora))
+```
+
+### 🌐 **Operações com Fuso Horário**
+
+```python
+from smart_time_py.timezone import (
+    convert_timezone,
+    get_timezone_info,
+    is_dst,
+    get_available_timezones
+)
+from datetime import datetime
+
+# Converter entre fusos horários
+data = datetime(2025, 1, 1, 12, 0)
+nova_data = convert_timezone(data, "America/Sao_Paulo", "Europe/London")
+print("🌍 Data convertida:", nova_data)
+
+# Verificar informações do fuso horário
+info = get_timezone_info("America/Sao_Paulo")
+print("ℹ️ Informações do fuso:", info)
+
+# Verificar se está em horário de verão
+print("☀️ Está em horário de verão?", is_dst(data, "America/Sao_Paulo"))
+
+# Listar fusos horários disponíveis
+print("🌎 Fusos disponíveis:", get_available_timezones())
+```
+
 ---
 
 ## 🧪 **Testes**
@@ -98,14 +212,41 @@ print("📏 Diferença em dias:", calculate_difference(date1, date2, "days"))
 Execute os testes com `pytest`:
 
 ```bash
-pytest tests/
-```
-
-Para uma saída detalhada:
-
-```bash
 pytest -v
 ```
+
+Para ver a cobertura de testes:
+
+```bash
+pytest -v --cov=smart_time_py
+```
+
+---
+
+## 📦 **Dependências**
+
+- Python 3.8+
+- pytz>=2023.3
+- python-dateutil>=2.8.2
+- babel>=2.12.1
+
+---
+
+## 📄 **Licença**
+
+Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+---
+
+## 🤝 **Contribuições**
+
+Contribuições são bem-vindas! Por favor, leia as diretrizes de contribuição antes de enviar um pull request.
+
+---
+
+## 📞 **Suporte**
+
+Para suporte, por favor abra uma issue no [GitHub](https://github.com/robertolima/smart-time-py/issues).
 
 ---
 

@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="smart_time_py",
-    version="1.1.1",
+    version="1.1.3",
     author="Roberto Lima",
     author_email="robertolima.izphera@gmail.com",
     description="Conversão inteligente de datas e horas em Python.",
@@ -23,4 +23,9 @@ setup(
     python_requires=">=3.6",
     include_package_data=True,
     license="MIT",
+    project_urls={
+        "Homepage": "https://github.com/robertolima-dev/smart-time-py", # noqa501
+        "Repository": "https://github.com/robertolima-dev/smart-time-py", # noqa501
+        "Issues": "https://github.com/robertolima-dev/smart-time-py/issues", # noqa501
+    },
 )
