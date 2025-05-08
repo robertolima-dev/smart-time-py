@@ -1,50 +1,21 @@
 """
-Smart Time - Uma biblioteca avançada para manipulação de datas e tempos em Python
+smart_time_py - Uma biblioteca avançada para manipulação de datas e tempos em Python.
 """
 
-from .core.converter import (
-    string_to_datetime,
-    datetime_to_string,
-    validate_date_string,
-    convert_to_format,
-    convert_with_timezone
-)
+from .analysis import (TimeGroup, analyze_seasonality,
+                       calculate_temporal_stats, detect_temporal_patterns,
+                       group_dates)
+from .converter import (add_time, auto_validate_date, calculate_difference,
+                        convert_to_format, convert_with_timezone,
+                        datetime_to_string, is_valid_date, string_to_datetime,
+                        subtract_time, validate_date_string)
+from .formatters import format_iso, format_natural, format_relative
+from .holidays import (add_holiday, get_holidays, get_working_days, is_holiday,
+                       remove_holiday)
+from .periods import DateRange, PeriodType, TimePeriod
+from .timezone import (convert_timezone, get_available_timezones,
+                       get_timezone_info, is_dst_active)
 
-from .core.time_operations import (
-    add_time,
-    subtract_time,
-    calculate_difference
-)
-
-from .core.validation import (
-    is_valid_date,
-    auto_validate_date
-)
-
-from .holidays import (
-    is_holiday,
-    get_holidays,
-    add_holiday,
-    remove_holiday
-)
-
-from .periods import (
-    TimePeriod,
-    DateRange,
-    get_overlapping_periods
-)
-
-from .formatters import (
-    format_relative,
-    format_custom
-)
-
-from .timezone import (
-    get_timezone_info,
-    convert_timezone,
-    get_timezone_abbreviation
-)
-
-__version__ = "1.0.0"
+__version__ = "1.2.0"
 __author__ = "Roberto Lima"
-__license__ = "MIT"
+__email__ = "robertolima.izphera@gmail.com"

@@ -15,6 +15,7 @@
 - 📊 **Períodos e intervalos de tempo** com operações avançadas
 - 📈 **Formatação inteligente** de datas e horas
 - 🚀 **Funções leves e otimizadas** para aplicações diversas
+- 📊 **Análise temporal avançada** com agrupamento, estatísticas e detecção de padrões
 
 ---
 
@@ -203,6 +204,45 @@ print("☀️ Está em horário de verão?", is_dst(data, "America/Sao_Paulo"))
 
 # Listar fusos horários disponíveis
 print("🌎 Fusos disponíveis:", get_available_timezones())
+```
+
+### 📊 **Análise Temporal Avançada**
+
+```python
+from smart_time_py.analysis import (
+    TimeGroup,
+    group_dates,
+    calculate_temporal_stats,
+    detect_temporal_patterns,
+    analyze_seasonality
+)
+from datetime import datetime
+
+# Criar uma lista de datas para análise
+dates = [
+    datetime(2025, 1, 1, 10, 0),
+    datetime(2025, 1, 2, 10, 0),
+    datetime(2025, 1, 3, 10, 0),
+    datetime(2025, 1, 8, 10, 0),
+    datetime(2025, 1, 9, 10, 0),
+    datetime(2025, 1, 10, 10, 0),
+]
+
+# Agrupar datas por período
+groups = group_dates(dates, TimeGroup.WEEKLY)
+print("📅 Grupos semanais:", groups)
+
+# Calcular estatísticas temporais
+stats = calculate_temporal_stats(dates, TimeGroup.DAILY)
+print("📊 Estatísticas diárias:", stats)
+
+# Detectar padrões temporais
+patterns = detect_temporal_patterns(dates)
+print("🔄 Padrões encontrados:", patterns)
+
+# Analisar sazonalidade
+seasonality = analyze_seasonality(dates)
+print("📈 Análise de sazonalidade:", seasonality)
 ```
 
 ---

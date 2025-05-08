@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="smart_time_py",
-    version="1.1.3",
+    version="1.2.0",
     author="Roberto Lima",
     author_email="robertolima.izphera@gmail.com",
     description="Conversão inteligente de datas e horas em Python.",
