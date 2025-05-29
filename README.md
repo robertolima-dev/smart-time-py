@@ -245,6 +245,50 @@ seasonality = analyze_seasonality(dates)
 print("📈 Análise de sazonalidade:", seasonality)
 ```
 
+### 📅 **Integração com Calendários Externos**
+
+```python
+from smart_time_py.calendar_integration import GoogleCalendarIntegration
+from datetime import datetime, timedelta
+
+# Inicializar integração com Google Calendar
+calendar = GoogleCalendarIntegration()
+
+# Autenticar com o Google Calendar
+calendar.authenticate('credentials.json')
+
+# Obter eventos do período
+start_date = datetime.now()
+end_date = start_date + timedelta(days=7)
+events = calendar.get_events(start_date, end_date)
+
+# Criar um novo evento
+event_data = {
+    'summary': 'Reunião de Projeto',
+    'location': 'Sala de Conferência',
+    'description': 'Discussão sobre o progresso do projeto',
+    'start': datetime.now() + timedelta(days=1),
+    'end': datetime.now() + timedelta(days=1, hours=1),
+    'timezone': 'America/Sao_Paulo'
+}
+new_event = calendar.create_event(event_data)
+
+# Atualizar um evento existente
+updated_event = calendar.update_event('event_id', event_data)
+
+# Remover um evento
+calendar.delete_event('event_id')
+
+# Exportar eventos para formato iCal
+calendar.export_to_ical(events, 'eventos.ics')
+```
+
+> **Nota**: Para usar a integração com Google Calendar, você precisa:
+> 1. Criar um projeto no Google Cloud Console
+> 2. Habilitar a API do Google Calendar
+> 3. Criar credenciais OAuth2
+> 4. Baixar o arquivo de credenciais e salvá-lo como `credentials.json`
+
 ---
 
 ## 🧪 **Testes**

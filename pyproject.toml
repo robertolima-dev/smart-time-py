@@ -5,11 +5,11 @@ build-backend = "hatchling.build"
 
 [project]
 name = "smart-time-py"
-version = "1.2.0"
+version = "1.3.0"
 authors = [
     { name = "Roberto Lima", email = "robertolima@example.com" },
 ]
-description = "Uma biblioteca avançada para manipulação de datas e tempos em Python"
+description = "⏳ Uma biblioteca avançada para manipulação de datas e tempos em Python"
 readme = "README.md"
 requires-python = ">=3.8"
 license = { text = "MIT" }
@@ -29,6 +29,10 @@ dependencies = [
     "pytz>=2023.3",
     "python-dateutil>=2.8.2",
     "babel>=2.12.1",
+    "google-api-python-client>=2.108.0",
+    "google-auth-httplib2>=0.1.1",
+    "google-auth-oauthlib>=1.1.0",
+    "icalendar>=5.0.7",
 ]
 
 [project.urls]
