@@ -1,5 +1,23 @@
 # 📜 Changelog
 
+## [1.3.1] - 2026-06-18
+### Corrigido
+- `pyproject.toml` tinha email de autor falso (`@example.com`) e URLs
+  apontando pra `github.com/robertolima/smart-time-py` (repo errado/sem o
+  `-dev`) em vez do remote real — já estava publicado assim no PyPI v1.3.0.
+- `smart_time_py/__init__.py` tinha `__version__ = "1.2.0"` hardcoded,
+  dessincronizado da versão real publicada (1.3.0). `scripts/smoke_install.sh`
+  agora valida isso automaticamente comparando com `importlib.metadata`.
+- `google.auth`/`google.oauth2` eram usados em `calendar_integration.py` sem
+  `google-auth` declarado diretamente em `dependencies` (dependia de vir
+  transitivamente via outro pacote) — adicionado explicitamente.
+
+### Alterado
+- Removido `setup.py` duplicado; `pyproject.toml` (build via `hatchling`)
+  passa a ser a única fonte de metadados do pacote.
+- Build via `python -m build` + `twine check`, com CI (`ci.yml`) e release
+  automatizado por tag (`release.yml`) publicando no PyPI.
+
 ## [1.3.0] - 2025-05-29
 ### Adicionado
 - Robustez nos testes de integração com Google Calendar, com mocks aprimorados e testes unitários abrangentes.

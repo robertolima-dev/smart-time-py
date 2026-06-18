@@ -330,7 +330,7 @@ Contribuições são bem-vindas! Por favor, leia as diretrizes de contribuição
 
 ## 📞 **Suporte**
 
-Para suporte, por favor abra uma issue no [GitHub](https://github.com/robertolima/smart-time-py/issues).
+Para suporte, por favor abra uma issue no [GitHub](https://github.com/robertolima-dev/smart-time-py/issues).
 
 ---
 
@@ -346,8 +346,7 @@ smart_time_py/
 ├── tests/                      # 🧪 Testes unitários
 │   └── test_converter.py
 │
-├── setup.py                    # ⚙️ Configuração para publicação
-├── pyproject.toml              # 📦 Configuração moderna
+├── pyproject.toml              # ⚙️ Configuração do pacote (build via hatchling)
 ├── README.md                   # 📚 Documentação do projeto
 ├── LICENSE                     # 📜 Licença MIT
 └── MANIFEST.in                 # 📋 Inclusão de arquivos extras

@@ -20,6 +20,6 @@ from smart_time_py.periods import DateRange, TimePeriod
 from smart_time_py.timezone import (convert_timezone, get_available_timezones,
                                     get_timezone_info, is_dst_active)
 
-__version__ = "1.2.0"
+__version__ = "1.3.1"
 __author__ = "Roberto Lima"
 __email__ = "robertolima.izphera@gmail.com"
